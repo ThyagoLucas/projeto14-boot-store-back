@@ -1,5 +1,5 @@
 # all ignoreds
-node_Modules/
+node_modules/
 package-lock.json
 
 
