@@ -1,0 +1,6 @@
+# all ignoreds
+node_Modules/
+package-lock.json
+
+
+
