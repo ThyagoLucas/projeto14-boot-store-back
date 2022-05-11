@@ -34,7 +34,7 @@ export async function postLogin(req, res) {
         if(validateEmail && bcrypt.compareSync(password, validateEmail.password)){
             console.log("entrando no if")
             const tokenSession = v4();
-            await db.collection("sessions").insertOne({userId:validateEmail._id, tokenSession:tokenSession, date:Date.now(), isAvailable:true});
+            await db.collection("sessions").insertOne({userId:validateEmail._id, tokenSession:tokenSession, date:date, isAvailable:true});
             const session = await db.collection("sessions").findOne({tokenSession:tokenSession});
             res.status(200).send(session);
         } else {
