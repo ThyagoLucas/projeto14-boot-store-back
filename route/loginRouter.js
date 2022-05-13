@@ -1,7 +1,8 @@
 import {Router} from 'express';
 
-const loginRouter = Router();
 import {postLogin} from '.././controllers/loginControllers.js';
+
+const loginRouter = Router();
 
 loginRouter.post('/login', postLogin )
 console.log("funcionando chefe")

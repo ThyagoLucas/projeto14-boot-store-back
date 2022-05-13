@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 import loginRouter from './route/loginRouter.js';
 import registerRouter from './route/registerRouter.js';
+import homeRouter from './route/homeRouter.js';
 
 const app = express();
 
@@ -22,3 +23,4 @@ app.listen(port,()=>{
 
 app.use(registerRouter);
 app.use(loginRouter);
+app.use(homeRouter);

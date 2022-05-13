@@ -1,3 +1,5 @@
+// TODO ARRUMAR PARA MIDDLEWARE
+
 import db from '../db.js';
 import joi from 'joi';
 import bcrypt from 'bcrypt';
@@ -28,11 +30,9 @@ export async function postLogin(req, res) {
     }
 
     try{
-        console.log("entrando no try")
         const validateEmail = await db.collection("clients").findOne({email:email});
         console.log(validateEmail);
         if(validateEmail && bcrypt.compareSync(password, validateEmail.password)){
-            console.log("entrando no if")
             const tokenSession = v4();
             await db.collection("sessions").insertOne({userId:validateEmail._id, tokenSession:tokenSession, date:date, isAvailable:true});
             const session = await db.collection("sessions").findOne({tokenSession:tokenSession});
