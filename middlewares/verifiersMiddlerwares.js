@@ -37,3 +37,6 @@ export async function vRegisterDatasMid(req, res, next){
 
 }
 
+/* export async function vLoginDatasMid(req, res, next){
+
+} */
