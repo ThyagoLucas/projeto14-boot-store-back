@@ -8,10 +8,10 @@ import dayjs from 'dayjs';
 
 
 export async function postLogin(req, res) {
-    console.log("entrando")
-    const { email, password } = req.body;
+    
+    const { email, password, shopCart} = req.body;
     const date = dayjs().format("DD/MM/YYYY HH:mm:ss");
-
+   
     const user = {
         email,
         password
@@ -36,6 +36,7 @@ export async function postLogin(req, res) {
             const tokenSession = v4();
             await db.collection("sessions").insertOne({userId:validateEmail._id, tokenSession:tokenSession, date:date, isAvailable:true});
             const session = await db.collection("sessions").findOne({tokenSession:tokenSession});
+            saveShopCart(email, shopCart, date);
             res.status(200).send(session);
         } else {
         res.status(404).send("Usuário não encontrado");
@@ -46,3 +47,4 @@ export async function postLogin(req, res) {
         res.status(500).send("Erro no servidor");
     }
 }
+
